@@ -212,12 +212,12 @@ rule-providers:
   direct-domain:
     behavior: domain
     format: text
-    url: https://raw.githubusercontent.com/Dhgaj/StashRules/main/domain-direct.txt
+    url: https://cdn.jsdelivr.net/gh/Dhgaj/StashRules@main/domain-direct.txt
     interval: 43200
   adblock-domain:
     behavior: domain
     format: text 
-    url: https://raw.githubusercontent.com/Dhgaj/StashRules/main/domain-adblock.txt
+    url: https://cdn.jsdelivr.net/gh/Dhgaj/StashRules@main/domain-adblock.txt
     interval: 43200
 
 # 规则配置
