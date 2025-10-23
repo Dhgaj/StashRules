@@ -211,12 +211,12 @@ rule-providers:
     interval: 43200
   direct-domain:
     behavior: domain
-    format: yaml 
+    format: text
     url: https://raw.githubusercontent.com/Dhgaj/StashRules/main/domain-direct.txt
     interval: 43200
   adblock-domain:
     behavior: domain
-    format: yaml 
+    format: text 
     url: https://raw.githubusercontent.com/Dhgaj/StashRules/main/domain-adblock.txt
     interval: 43200
 
