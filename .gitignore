@@ -1,0 +1,18 @@
+# macOS
+.DS_Store
+
+# Logs
+*.log
+
+# Temp files
+*.tmp
+*.bak
+*.swp
+*.swo
+
+# Stash specific (optional, uncomment if you want to ignore these)
+# *.sub
+# *.conf
+
+# Trash
+.Trash/
