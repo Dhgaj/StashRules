@@ -29,6 +29,8 @@ hosts:
 dns:
   enable: true
   use-host: true
+  follow-rule: true
+  # 自行选择较快的 DNS 服务商 不需要的可以注释掉
   default-nameserver:
     - 114.114.114.114
     - 223.5.5.5
@@ -48,7 +50,7 @@ dns:
     - https://cloudflare-dns.com/dns-query
     - https://dns.google/dns-query
   cache-algorithm: lru 
-  cache-size: 1024 
+  cache-size: 4096
   fallback-filter:
     geoip: true 
     geoip-code: CN 
@@ -92,6 +94,7 @@ proxy-groups:
       - "欧洲 🇪🇺 EU"
       - "其它 🌏 OTHER"
       - "常用 ⭐ Common"
+      - "容错 🔧 Fail"
       - "自动 🔄 Auto"
       - "手动 🛠️ Manual"
       - DIRECT
@@ -101,7 +104,7 @@ proxy-groups:
     icon: https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/United_States.png
     type: select
     interval: 120
-    lazy: null
+    lazy: false
     include-all: true
   - name: "香港 🇭🇰 HK"
     filter: "🇭🇰|HK|港|香港|(?i)Hong"
@@ -174,7 +177,7 @@ proxy-groups:
     hidden: true
     url: https://www.gstatic.com/generate_204
     interval: 120
-    timeout: 1500
+    timeout: 300
     lazy: true
     proxies:
       - "常用 ⭐ Common"
@@ -182,7 +185,6 @@ proxy-groups:
       - "美国 🇺🇲 US"
       - "其它 🌏 OTHER"
       - "欧洲 🇪🇺 EU"
-      - DIRECT
   - name: "订阅信息 🗂️"
     filter: "流量|(?i)flow|流量统计|流量监控|流量使用|流量使用情况|流量使用统计|流量使用监控|重置|到期|剩余|统计"
     icon: https://fastly.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Lab.png
@@ -223,14 +225,13 @@ rule-providers:
 # 规则配置
 rules:
   # == 以上为添加的规则 ==
+  - GEOIP,LAN,DIRECT # 局域网 LAN 地址范围直连
   # == 特定服务分流 ==
   - DOMAIN-SUFFIX,spotify.com,美国 🇺🇲 US # Spotify 
   # == 远程规则集 ==
+  - RULE-SET,adblock-domain,REJECT # 广告屏蔽
   - RULE-SET,cn-cidr,DIRECT,no-resolve # IP地址范围直连
   - RULE-SET,direct-domain,DIRECT # 直连规则
-  - RULE-SET,adblock-domain,REJECT # 广告屏蔽
   - RULE-SET,proxy-domain,PROXY # 代理规则
-  # == 默认规则 ==
-  - GEOIP,LAN,DIRECT # 局域网 LAN 地址范围直连
-  - GEOIP,CN,DIRECT # 中国大陆地址范围直连 可添加`no-resolve`以避免触发DNS解析
+  - GEOIP,CN,DIRECT,no-resolve # 中国大陆地址范围直连 可添加`no-resolve`以避免触发DNS解析
   - MATCH,PROXY # 默认规则，匹配所有流量

@@ -11,6 +11,7 @@
 -   `Default.yaml`: Stash 的主配置文件，包含了代理提供者、端口、DNS 设置、策略组定义和规则。
 -   `domain-adblock.txt`: 包含需要屏蔽的广告域名列表，用于实现广告过滤。
 -   `domain-direct.txt`: 包含需要直连的域名列表，用于绕过代理直接访问。
+-   `sort_rules.sh`: 一个用于排序和去重 `.txt` 规则文件的脚本。
 
 ## 使用指南
 
@@ -19,6 +20,24 @@
 1.  打开 Stash 应用。
 2.  导航到配置页面。
 3.  选择导入本地文件或通过 URL 导入 `Default.yaml`。
+
+### 排序和去重规则文件
+
+可以使用 `sort_rules.sh` 脚本来对 `domain-adblock.txt` 和 `domain-direct.txt` 等 `.txt` 规则文件进行排序和去重。这有助于保持规则文件的整洁和高效。
+
+**用法:**
+
+```bash
+./sort_rules.sh <文件1> [文件2] ...
+```
+
+**示例:**
+
+```bash
+./sort_rules.sh domain-direct.txt domain-adblock.txt
+```
+
+脚本会显示被删除的重复行（如果有）。
 
 ### 更新 `domain-adblock.txt` 和 `domain-direct.txt`
 

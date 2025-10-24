@@ -1,13 +1,13 @@
-.amp-api.apps.apple.com
-.amp-api-edge.apps.apple.com
 .aliyuncs.com
+.amp-api-edge.apps.apple.com
+.amp-api.apps.apple.com
 .apple.com
 .apple.com.cn
 .apps.apple.com
 .apps.mzstatic.com
 .authing.co
-.cdnapple.com
 .cdn-apple.com
+.cdnapple.com
 .changjiang.yuketang.cn
 .cleanmymac.com
 .cn.eagle.cool
@@ -17,8 +17,6 @@
 .goodcloud.xyz
 .gzhu.edu.cn
 .icloud.com
-.icloud.com
-.icloud.com.cn
 .icloud.com.cn
 .immersivetranslate.com
 .itunes.apple.com
@@ -26,6 +24,7 @@
 .kimi.moonshot.cn
 .learn.microsoft.com
 .leetcode.cn
+.liansifan.me
 .luogu.com.cn
 .macpaw.com
 .microsoft.com
@@ -40,7 +39,5 @@
 .www.wps.com
 .www.xiaobaipan.com
 .www.yishuzi.cn
-.www.wps.com
-.www.xiaobaipan.com
 .xp.appre.com
 .yinhuadm.one
