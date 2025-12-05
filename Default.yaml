@@ -221,6 +221,16 @@ rule-providers:
     format: text 
     url: https://cdn.jsdelivr.net/gh/Dhgaj/StashRules@main/domain-adblock.txt
     interval: 43200
+  strict-adblock-domain:
+    behavior: classical
+    format: yaml
+    url: https://cdn.jsdelivr.net/gh/Dhgaj/StashRules@main/domain-strict-adblock.yaml
+    interval: 43200
+  proxy-domain-custom:
+    behavior: domain
+    format: text
+    url: https://cdn.jsdelivr.net/gh/Dhgaj/StashRules@main/domain-proxy.txt
+    interval: 43200
 
 # 规则配置
 rules:
@@ -229,9 +239,11 @@ rules:
   # == 特定服务分流 ==
   - DOMAIN-SUFFIX,spotify.com,美国 🇺🇲 US # Spotify 
   # == 远程规则集 ==
+  - RULE-SET,strict-adblock-domain,REJECT-DROP # 严格广告屏蔽（可选）
   - RULE-SET,adblock-domain,REJECT # 广告屏蔽
   - RULE-SET,cn-cidr,DIRECT,no-resolve # IP地址范围直连
   - RULE-SET,direct-domain,DIRECT # 直连规则
+  - RULE-SET,proxy-domain-custom,PROXY # 自定义代理规则
   - RULE-SET,proxy-domain,PROXY # 代理规则
   - GEOIP,CN,DIRECT,no-resolve # 中国大陆地址范围直连 可添加`no-resolve`以避免触发DNS解析
   - MATCH,PROXY # 默认规则，匹配所有流量

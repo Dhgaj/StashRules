@@ -1,0 +1,53 @@
+name: Sort Rules and Create PR
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+jobs:
+  sort-rules:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Setup Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.x'
+
+    - name: Install PyYAML
+      run: pip install pyyaml
+
+    - name: Run sorting scripts
+      id: sort_check
+      run: |
+        # 运行 TXT 排序脚本
+        chmod +x .scripts/sort_txt_rules.sh
+        ./.scripts/sort_txt_rules.sh domain-adblock.txt domain-direct.txt
+        
+        # 运行 YAML 排序脚本
+        python .scripts/sort_yaml_rules.py domain-strict-adblock.yaml
+        
+        # 检查是否有任何文件更改
+        if ! git diff --exit-code --quiet domain-adblock.txt domain-direct.txt domain-strict-adblock.yaml; then
+          echo "::set-output name=sorted::true"
+        fi
+
+    - name: Create Pull Request
+      if: steps.sort_check.outputs.sorted == 'true'
+      uses: peter-evans/create-pull-request@v5
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+        commit-message: "chore: Sort rule files"
+        title: "chore: Sort rule files"
+        body: "This PR sorts the rule files automatically."
+        branch: "feature/auto-sort-rules"
+        base: "main"
+
+    - name: Done
+      run: echo "Workflow finished."

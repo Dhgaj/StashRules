@@ -1,3 +1,12 @@
+.mcgi.v.qq.com
+.vd6.l.qq.com
+.vi.l.qq.com
+.visualstudio.microsoft.com
+.s10.adtidy.org
+.trae.cn
+.pthxx.com
+.liansifan.me
+
 .aliyuncs.com
 .amp-api-edge.apps.apple.com
 .amp-api.apps.apple.com
