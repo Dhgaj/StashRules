@@ -1,11 +1,3 @@
-.mcgi.v.qq.com
-.vd6.l.qq.com
-.vi.l.qq.com
-.visualstudio.microsoft.com
-.s10.adtidy.org
-.trae.cn
-.pthxx.com
-.liansifan.me
 
 .aliyuncs.com
 .amp-api-edge.apps.apple.com
@@ -36,11 +28,18 @@
 .liansifan.me
 .luogu.com.cn
 .macpaw.com
+.mcgi.v.qq.com
 .microsoft.com
+.pthxx.com
 .qq.com
+.s10.adtidy.org
 .send2me.cn
+.trae.cn
 .tripo3d.ai
 .v.qq.com
+.vd6.l.qq.com
+.vi.l.qq.com
+.visualstudio.microsoft.com
 .writeup.ctfhub.com
 .www.apple.com
 .www.battleofballs.com
